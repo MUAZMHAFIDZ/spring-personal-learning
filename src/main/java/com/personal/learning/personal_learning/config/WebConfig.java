@@ -13,4 +13,11 @@ public class WebConfig implements WebMvcConfigurer {
             .allowedOrigins("*") // Atau ganti sesuai kebutuhan
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // URL pattern "/uploads/**" akan mengarah ke folder fisik di disk "E:/spring-uploads/"
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:E:/spring-uploads/");
+    }
 }
